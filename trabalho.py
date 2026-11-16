@@ -1,7 +1,7 @@
-
+# Importando
 import json
-from datetime import date
 
+# Lista
 produtos = []
 movimentacoes = []
 
@@ -156,9 +156,10 @@ def Movimentar_Estoque(tipo):
         for produto in produtos:
             if produto["codigo"] == codigo:
                 quantidade = int(input("Quantidade: "))
+                data_movimentacao = input("Data da movimentação (DD/MM/AAAA): ").strip()
 
-                if quantidade <= 0:
-                    print("Quantidade inválida!")
+                if quantidade <= 0 or data_movimentacao == "":
+                    print("Dados inválidos!")
                     return
 
                 if tipo == "saida":
@@ -176,7 +177,7 @@ def Movimentar_Estoque(tipo):
                     "descricao": produto["descricao"],
                     "tipo": tipo,
                     "quantidade": quantidade,
-                    "data": date.today().strftime("%d/%m/%Y")
+                    "data": data_movimentacao
                 }
 
                 movimentacoes.append(movimentacao)
@@ -246,4 +247,4 @@ while True:
         print("Saindo . . .")
         break
     else:
-    print("Opção inválida. Tente novamente.")   
+        print("Opção inválida. Tente novamente.")
