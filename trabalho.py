@@ -27,7 +27,7 @@ def Carregar_Dados():
     except KeyError:
         produtos = []
         movimentacoes = []
-        print("Estrutura do arquivo inválida!")
+        print("Estrutura do arquivo inválida")
 
 # Salva os dados no arquivo JSON
 def Salvar_Dados():
@@ -41,7 +41,7 @@ def Salvar_Dados():
             json.dump(dados, arquivo, indent=4, ensure_ascii=False)
 
     except OSError:
-        print("Erro ao salvar os dados!")
+        print("Erro ao salvar os dados")
 
 # Menu principal
 def menu():
@@ -63,7 +63,7 @@ def Incluir_Produto():
 
         for produto in produtos:
             if produto["codigo"] == codigo:
-                print("Código já cadastrado!")
+                print("Código já cadastrado")
                 return
 
         descricao = input("Nome: ").strip()
@@ -72,23 +72,23 @@ def Incluir_Produto():
         preco = float(input("Preço: ").replace(",", "."))
 
         if codigo <= 0 or descricao == "" or quantidade < 0 or minimo < 0 or preco <= 0:
-            print("Dados inválidos!")
+            print("Dados inválidos")
             return
 
         produto = {
             "codigo": codigo,
             "descricao": descricao,
             "quantidade": quantidade,
-            "estoque_minimo": minimo,
+            "estoque minimo": minimo,
             "preco": preco
         }
 
         produtos.append(produto)
         Salvar_Dados()
-        print("Produto cadastrado!")
+        print("Produto cadastrado")
 
     except ValueError:
-        print("Digite valores válidos!")
+        print("Valor não é valido")
 
 # Altera um produto
 def Alterar_Produto():
@@ -164,7 +164,7 @@ def Movimentar_Estoque(tipo):
 
                 if tipo == "saida":
                     if quantidade > produto["quantidade"]:
-                        print("Estoque insuficiente!")
+                        print("Estoque insuficiente")
                         return
 
                     produto["quantidade"] -= quantidade
@@ -182,7 +182,7 @@ def Movimentar_Estoque(tipo):
 
                 movimentacoes.append(movimentacao)
                 Salvar_Dados()
-                print("Movimentação registrada!")
+                print("Movimentação registrad")
                 return
 
         print("Produto não encontrado!")
@@ -217,7 +217,7 @@ def Estoque_Baixo():
             achou = True
 
     if achou == False:
-        print("Nenhum produto com estoque baixo!")
+        print("Nenhum produto com estoque baixo")
 
 # Carrega os dados
 Carregar_Dados()
@@ -247,4 +247,4 @@ while True:
         print("Saindo . . .")
         break
     else:
-        print("Opção inválida. Tente novamente.")
+        print("Opção inválida, tente novamente.")
