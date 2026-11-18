@@ -192,10 +192,10 @@ def Movimentar_Estoque(tipo):
 
 # Consulta estoque por código ou nome
 def Consultar_Estoque():
-    busca = input("Digite o código ou nome: ").strip()
+    procura = input("Digite o código ou nome: ").strip()
 
     for produto in produtos:
-        if busca == str(produto["codigo"]) or busca.lower() in produto["descricao"].lower():
+        if procura == str(produto["codigo"]) or procura.lower() in produto["descricao"].lower():
             print("Produto:", produto["descricao"])
             print("Código:", produto["codigo"])
             print("Quantidade:", produto["quantidade"])
@@ -207,16 +207,16 @@ def Consultar_Estoque():
 
 # Mostra produtos com estoque baixo
 def Estoque_Baixo():
-    encontrou = False
+    achou = False
 
     for produto in produtos:
         if produto["quantidade"] <= produto["estoque_minimo"]:
             print("Produto:", produto["descricao"])
             print("Quantidade:", produto["quantidade"])
             print("Estoque mínimo:", produto["estoque_minimo"])
-            encontrou = True
+            achou = True
 
-    if encontrou == False:
+    if achou == False:
         print("Nenhum produto com estoque baixo!")
 
 # Carrega os dados
@@ -225,25 +225,25 @@ Carregar_Dados()
 # Executa o programa
 while True:
     menu()
-    opc = input("Escolha uma opção: ").strip()
+    opcao = input("Escolha uma opção: ").strip()
 
-    if opc == "1":
+    if opcao == "1":
         Incluir_Produto()
-    elif opc == "2":
+    elif opcao == "2":
         Alterar_Produto()
-    elif opc == "3":
+    elif opcao == "3":
         Excluir_Produto()
-    elif opc == "4":
+    elif opcao == "4":
         Listar_Produto()
-    elif opc == "5":
+    elif opcao == "5":
         Movimentar_Estoque("entrada")
-    elif opc == "6":
+    elif opcao == "6":
         Movimentar_Estoque("saida")
-    elif opc == "7":
+    elif opcao == "7":
         Consultar_Estoque()
-    elif opc == "8":
+    elif opcao == "8":
         Estoque_Baixo()
-    elif opc == "9":
+    elif opcao == "9":
         print("Saindo . . .")
         break
     else:
